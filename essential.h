@@ -7,11 +7,15 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
 
 namespace chapter1 {
     void demo1();
 
     void demo2();
+    void demo2_cstyle();
+
+    void demo3();
 }
 
 namespace chapter2 {
