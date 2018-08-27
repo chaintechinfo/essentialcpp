@@ -8,5 +8,6 @@ int main(int argc, char** argv) {
     // chapter1::demo1();
     // chapter1::demo2();
     // chapter1::demo2_cstyle();
-    chapter1::demo3();
+    // chapter1::demo3();
+    chapter1::file_op();
 }

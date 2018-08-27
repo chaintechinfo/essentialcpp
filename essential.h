@@ -16,6 +16,8 @@ namespace chapter1 {
     void demo2_cstyle();
 
     void demo3();
+
+    void file_op();
 }
 
 namespace chapter2 {

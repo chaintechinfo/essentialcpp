@@ -4,6 +4,8 @@
 
 #include <iomanip>
 #include <cstring>
+#include <fstream>
+#include <algorithm>
 #include "essential.h"
 
 namespace chapter1 {
@@ -91,6 +93,43 @@ namespace chapter1 {
              << ", average is: "
              << average
              << endl;
+    }
+
+    void file_op() {
+        ifstream ifile("/tmp/a.txt");
+        if (!ifile) {
+            cerr << "Oops! Cant't open the input file." << endl;
+            exit(1);
+        }
+
+        ofstream ofile("/tmp/a.sort.txt");
+        if (!ofile) {
+            cerr << "Oops! Cant't open the output file." << endl;
+            exit(1);
+        }
+
+        string word;
+        vector<string> text;
+        while (ifile >> word) {
+            text.push_back(word);
+        }
+
+        cout << "Unsorted text: \n";
+
+        int ix(0);
+        for (; ix < text.size(); ++ix) {
+            cout << text[ix] << " ";
+        }
+        cout << endl;
+
+        // sort
+        sort(text.begin(), text.end());
+
+        ofile << "Sorted text: \n";
+        for (ix = 0; ix < text.size(); ++ix) {
+            ofile << text[ix] << " ";
+        }
+        ofile << endl;
     }
 }
 
