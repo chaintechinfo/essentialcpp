@@ -8,6 +8,9 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <map>
+#include <set>
+#include <fstream>
 
 using namespace std;
 
@@ -64,9 +67,17 @@ namespace chapter2 {
     }
 }
 
+// Related to STL
 namespace chapter3 {
     using namespace std;
-    
+
+    // Word counts
+    inline void initialize_exclude_set(set<string> &exclude_set);
+    inline void process_file(map<string, int> &word_count, const set<string> &exclude_set, ifstream &ifile);
+    inline void display_word_count(map<string, int> &word_count, ostream &os = cout);
+    inline void user_query(const map<string, int> &word_count);
+    void word_counts();
+
     void main();
 }
 
