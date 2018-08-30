@@ -64,4 +64,10 @@ namespace chapter2 {
     }
 }
 
+namespace chapter3 {
+    using namespace std;
+    
+    void main();
+}
+
 #endif //ESSENTIALCPP_ESSENTIAL_H
