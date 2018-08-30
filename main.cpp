@@ -3,7 +3,6 @@
 //
 
 #include "essential.h"
-#include "Stack.h"
 
 int main(int argc, char** argv) {
     // chapter1::demo1();
@@ -45,16 +44,5 @@ int main(int argc, char** argv) {
     /// ---
     // chapter3::main();
 
-    MyStack stack;
-    stack.push("123");
-    stack.push("abc");
-    cout << stack.size() << endl;
-    string elem;
-    stack.pop(elem);
-    cout << elem << endl;
-
-    stack.peek(elem);
-    cout << elem << endl;
-    cout << stack.size() << endl;
-    cout << stack.find("123") <<endl;
+    chapter4::main();
 }

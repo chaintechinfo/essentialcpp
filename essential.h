@@ -14,6 +14,8 @@
 #include <algorithm>
 #include <iterator>
 
+#include "Stack.h"
+
 using namespace std;
 
 namespace chapter1 {
@@ -116,6 +118,10 @@ namespace chapter3 {
     // stream iterator
     void stream_iterator();
 
+    void main();
+}
+
+namespace chapter4 {
     void main();
 }
 

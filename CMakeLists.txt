@@ -9,6 +9,7 @@ set( CPP_FILES
         chapter3.cpp
         Stack.h
         Stack.cpp
+        chapter4.cpp
 )
 
 add_executable(essentialcpp main.cpp ${CPP_FILES})
