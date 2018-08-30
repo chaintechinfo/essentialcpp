@@ -8,7 +8,8 @@ void chapter3::main() {
     cout << "Welcome to chapter3." << endl;
     // word_counts();
     // vector_sort();
-    query_families();
+    // query_families();
+    stream_iterator();
 }
 
 inline void chapter3::initialize_exclude_set(set<string> &exclude_set) {
@@ -240,4 +241,16 @@ void chapter3::query_families() {
 
     // display
     display_families(families);
+}
+
+void chapter3::stream_iterator() {
+    istream_iterator<string> in( cin >> noskipws ), eof;
+    vector<string> text;
+
+    copy(in, eof, back_inserter(text));
+
+    sort(text.begin(), text.end());
+
+    ostream_iterator<string> os( cout, " ");
+    copy(text.begin(), text.end(), os);
 }

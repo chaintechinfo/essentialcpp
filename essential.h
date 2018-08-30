@@ -12,6 +12,7 @@
 #include <set>
 #include <fstream>
 #include <algorithm>
+#include <iterator>
 
 using namespace std;
 
@@ -111,6 +112,9 @@ namespace chapter3 {
     void query_map(const map<string, vector<string>> &families, const string query_name);
     void display_families(map<string, vector<string>> &families, ostream &os=cout);
     void query_families();
+
+    // stream iterator
+    void stream_iterator();
 
     void main();
 }
