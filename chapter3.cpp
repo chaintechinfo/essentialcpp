@@ -6,7 +6,9 @@
 
 void chapter3::main() {
     cout << "Welcome to chapter3." << endl;
-    word_counts();
+    // word_counts();
+    // vector_sort();
+    query_families();
 }
 
 inline void chapter3::initialize_exclude_set(set<string> &exclude_set) {
@@ -98,4 +100,144 @@ void chapter3::word_counts() {
     display_word_count(word_count);
 }
 
+void chapter3::file_to_vector(vector<string> &vec, ifstream &ifile) {
+    string word;
+    while (ifile >> word) {
+        vec.push_back(word);
+    }
+}
 
+// vector sort
+void chapter3::vector_sort() {
+    // read file
+    ifstream ifile("/tmp/a.txt");
+    if (!ifile) {
+        cerr << "Oops! Cant't open the input file." << endl;
+        exit(1);
+    }
+
+    vector<string> vec;
+    file_to_vector(vec, ifile);
+
+    sort(vec.begin(), vec.end(), LessThan());
+    display_vector(vec);
+}
+
+// name is a file stream, we get the name from it.
+// name's style as bellow:
+//     surname1 child11 child12 ... child1N
+//     surname2 child21 child22 ... child2N
+void chapter3::populate_map(ifstream &name, map<string, vector<string>> &families) {
+
+    string textline;
+    // Parse a line per time
+    while (getline(name, textline)) {
+        string fam_name;
+        vector<string> child;
+
+        string::size_type pos = 0, prev_pos = 0, text_size = textline.size();
+
+        // Parse a word per time, and ++pos to skip blank string
+        while ((pos = textline.find_first_of(' ', pos)) != string::npos) {
+            string::size_type end_pos = pos - prev_pos;
+
+            // substr
+            string item = textline.substr(prev_pos, end_pos);
+            if (!prev_pos) {
+                fam_name = item;
+            } else {
+                child.push_back(item);
+            }
+
+            prev_pos = ++pos;
+        }
+
+        if (prev_pos < text_size) {
+            child.push_back(textline.substr(prev_pos, text_size - prev_pos));
+        }
+
+        if (!families.count(fam_name)) {
+            families[fam_name] = child;
+        } else {
+            cerr << "Oops! we already have a family name"
+                 << fam_name
+                 << " in our family map"
+                 << endl;
+        }
+    }
+}
+
+void chapter3::query_map(const map<string, vector<string>> &families, const string query_name) {
+    map<string, vector<string>>::const_iterator it = families.find(query_name);
+
+    if (it == families.end()) {
+        cout << "Sorry, the " << query_name
+             << " is not currently entered." << endl;
+        return;
+    }
+
+    cout << "The " << query_name;
+    if (!it->second.size()) {
+        cout << " has no children.\n";
+    } else {
+        vector<string>::const_iterator viter = it->second.begin(), vend_iter = it->second.end();
+
+        cout << " has " << it->second.size() << " children: ";
+        while (viter != vend_iter) {
+            cout << *viter << " ";
+            ++viter;
+        }
+        cout << endl;
+    }
+}
+
+void chapter3::display_families(map<string, vector<string>> &families, ostream &os) {
+    map<string, vector<string>>::const_iterator
+            iter = families.begin(),
+            end_iter = families.end();
+
+    while (iter != end_iter) {
+        os << "The " << iter->first << " family ";
+        if (iter->second.empty()) {
+            os << "has no children.\n";
+        } else {
+            os << "has " << iter->second.size() << " children: ";
+            vector<string>::const_iterator viter = iter->second.begin(), vend_iter = iter->second.end();
+
+            while (viter != vend_iter) {
+                os << *viter << " ";
+                ++viter;
+            }
+            os << endl;
+        }
+
+        ++iter;
+    }
+}
+
+void chapter3::query_families() {
+    map<string, vector<string>> families;
+    ifstream name_file("/tmp/families.txt");
+    if (!name_file) {
+        cerr << "Oops! Cant't open the input file." << endl;
+        exit(1);
+    }
+
+    populate_map(name_file, families);
+
+    // query
+    string fam_name;
+    while (true) {
+        cout << "Please enter a family name or q to quit: ";
+        cin >> fam_name;
+
+        if (fam_name == "q") {
+            break;
+        }
+
+        query_map(families, fam_name);
+    }
+
+    // display
+    display_families(families);
+}

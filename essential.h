@@ -11,6 +11,7 @@
 #include <map>
 #include <set>
 #include <fstream>
+#include <algorithm>
 
 using namespace std;
 
@@ -77,6 +78,39 @@ namespace chapter3 {
     inline void display_word_count(map<string, int> &word_count, ostream &os = cout);
     inline void user_query(const map<string, int> &word_count);
     void word_counts();
+
+    // Sort vector by the string length
+    class LessThan {
+    public:
+        bool operator()(const string &s1, const string &s2) {
+            return s1.size() < s2.size();
+        }
+    };
+
+    void file_to_vector(vector<string> &vec, ifstream &ifile);
+
+    template <typename T>
+    void display_vector(const vector<T> &vec, ostream &os=cout, int len=8) {
+        typename vector<T>::const_iterator
+                iter = vec.begin(),
+                end = vec.end();
+
+        int elem_cnt = 1;
+        while (iter != end) {
+            os << *iter++
+               << (!(elem_cnt % len) ? '\n' : ' ');
+        }
+
+        os << endl;
+    };
+
+    void vector_sort();
+
+    // query family
+    void populate_map(ifstream &name, map<string, vector<string>> &families);
+    void query_map(const map<string, vector<string>> &families, const string query_name);
+    void display_families(map<string, vector<string>> &families, ostream &os=cout);
+    void query_families();
 
     void main();
 }
