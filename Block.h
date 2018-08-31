@@ -8,6 +8,8 @@
 
 using namespace std;
 
+// https://davenash.com/2017/10/build-a-blockchain-with-c/
+// https://github.com/teaandcode/TestChain
 namespace metac {
 
     class Block {

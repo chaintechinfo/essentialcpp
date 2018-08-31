@@ -12,6 +12,8 @@ set( CPP_FILES
         chapter4.cpp
 		Block.h
 		Blockchain.h
+		sha256.h
+		sha256.hpp
 )
 
 add_executable(essentialcpp main.cpp ${CPP_FILES})
