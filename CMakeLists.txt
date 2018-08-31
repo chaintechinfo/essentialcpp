@@ -10,6 +10,8 @@ set( CPP_FILES
         Stack.h
         Stack.cpp
         chapter4.cpp
+		Block.h
+		Blockchain.h
 )
 
 add_executable(essentialcpp main.cpp ${CPP_FILES})
