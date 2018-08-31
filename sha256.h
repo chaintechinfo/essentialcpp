@@ -1,7 +1,9 @@
 #ifndef SHA256_H
 #define SHA256_H
 #include <string>
- 
+
+/// http://www.zedwood.com/article/cpp-sha256-function
+
 class SHA256
 {
 protected:
