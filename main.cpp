@@ -3,6 +3,7 @@
 //
 
 #include "essential.h"
+#include "hash_table.h"
 
 int main(int argc, char** argv) {
     // chapter1::demo1();
@@ -44,5 +45,9 @@ int main(int argc, char** argv) {
     /// ---
     // chapter3::main();
 
-    chapter4::main();
+    // chapter4::main();
+
+    /// test for hash table
+    ht_hash_table* ht = ht_new();
+    ht_del_hash_table(ht);
 }
