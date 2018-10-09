@@ -1,6 +1,7 @@
 //
 // Created by shniu on 18-10-9.
 //
+// https://github.com/jamesroutley/write-a-hash-table/tree/master/05-methods
 
 #ifndef ESSENTIALCPP_HASH_TABLE_H
 #define ESSENTIALCPP_HASH_TABLE_H
