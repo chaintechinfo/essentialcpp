@@ -49,5 +49,12 @@ int main(int argc, char** argv) {
 
     /// test for hash table
     ht_hash_table* ht = ht_new();
+    auto k = const_cast<char *>("abc");
+    auto v = const_cast<char *>("123");
+    ht_insert(ht, k, v);
+    char* v2 = ht_search(ht, k);
+    std::cout << "find value: " << v2 << std::endl;
+    ht_delete(ht, k);
+    std::cout << "hash table size: " << ht->count << std::endl;
     ht_del_hash_table(ht);
 }

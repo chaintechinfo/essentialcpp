@@ -110,8 +110,8 @@ namespace chapter3 {
     void vector_sort();
 
     // query family
-    void populate_map(ifstream &name, map<string, vector<string>> &families);
-    void query_map(const map<string, vector<string>> &families, const string query_name);
+    void populate_map(ifstream &name, map<string, vector<string>>& families);
+    void query_map(const map<string, vector<string> > &families, const string query_name);
     void display_families(map<string, vector<string>> &families, ostream &os=cout);
     void query_families();
 

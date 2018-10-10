@@ -2,6 +2,8 @@ cmake_minimum_required( VERSION 3.0)
 
 project( essentialcpp )
 
+set(CMAKE_CXX_STANDARD 11)
+
 set( CPP_FILES
         essential.h
         chapter1.cpp
@@ -16,6 +18,8 @@ set( CPP_FILES
 		sha256.hpp
 		hash_table.h
 		hash_table.cpp
+		prime.h
+		prime.cpp
 )
 
 add_executable(essentialcpp main.cpp ${CPP_FILES})
